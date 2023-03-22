@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMutation } from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Card,
@@ -7,8 +7,8 @@ import {
   Col
 } from 'react-bootstrap';
 import { REMOVE_BOOK } from '../utils/mutation';
-import { useQuery } from "@apollo/client";
-import { deleteBook } from '../utils/API';
+import { useQuery, useMutation } from '@apollo/client';
+
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 import { GET_ME } from "../utils/queries";
@@ -35,7 +35,7 @@ const SavedBooks = () => {
       const { data } = await removeBook({
         variables: { bookId },
       });
-      
+
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
